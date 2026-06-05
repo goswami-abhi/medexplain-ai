@@ -1,117 +1,293 @@
 # MediExplain AI
 
-AI-powered medical report analyzer that uses OCR and LLMs to extract, simplify, and explain healthcare reports in plain human language.
+Medical report analysis platform that uses OCR and LLM-based explanations to simplify healthcare reports into plain human language.
 
-Upload PDFs or images of lab results, prescriptions, and scans — get OCR extraction, AI explanations, highlighted values, and downloadable summaries.
+Upload PDFs or images of lab results, prescriptions, and scans — get OCR extraction, AI-generated explanations, highlighted values, and downloadable summaries.
 
-## Features
 
-- **Medical report upload** — drag-and-drop PDFs and images with file preview
-- **OCR text extraction** — Tesseract for images; PDF text + OCR fallback for scans
-- **AI explainer** — Groq (default), Gemini, or OpenAI rewrites clinical language into everyday terms
-- **Value highlights** — normal / borderline / abnormal badges and summary cards
-- **Health dashboard** — reports, activity, and quick insights
-- **Download summary** — PDF export of AI-generated health summary
 
-## Tech stack
+## Problem
 
-| Layer      | Technology                          |
-|-----------|--------------------------------------|
-| Frontend  | React, TypeScript, Tailwind CSS, Vite |
-| Backend   | FastAPI, Python 3.11+                |
-| Database  | SQLite (async via SQLAlchemy)        |
-| OCR       | Tesseract, pypdf, pdf2image          |
-| AI        | Groq, Google Gemini, or OpenAI       |
+Medical reports are often difficult for non-medical users to understand due to complex clinical terminology and confusing test values.
 
-## Project structure
+MediExplain AI simplifies healthcare reports using OCR and AI-generated explanations written in everyday language, helping users better understand their medical documents.
 
-```
+
+
+# Key Highlights
+
+* OCR-powered medical report extraction
+* AI-generated plain-language explanations
+* Abnormal value detection and highlighting
+* FastAPI async backend architecture
+* React + Tailwind responsive frontend
+* PDF summary generation
+* Groq LLM integration
+* SQLite + SQLAlchemy async ORM
+
+
+
+# Features
+
+# Medical Report Upload
+
+* Drag-and-drop PDF and image uploads
+* File preview cards
+* Support for prescriptions, lab reports, and scans
+
+# OCR Text Extraction
+
+* Tesseract OCR for images
+* PDF text extraction
+* OCR fallback for scanned PDFs
+# AI Medical Report Explainer
+
+* Groq (default), Gemini, or OpenAI integration
+* Converts clinical language into simple explanations
+* Human-friendly health summaries
+
+Example:
+
+> “Glucose exceeds normal range”
+
+becomes:
+
+> “Your sugar level is slightly higher than normal.”
+
+# Value Highlights
+
+* Normal / borderline / abnormal badges
+* Important medical values summarized into cards
+* Quick insights for easier understanding
+
+# Health Dashboard
+
+* Uploaded reports history
+* Recent activity tracking
+* Quick health insights
+
+# Download Summary
+
+* Export AI-generated summaries as PDF
+
+
+
+## How It Works
+
+1. User uploads a medical report
+2. OCR extracts report text
+3. AI analyzes extracted content
+4. Important values are highlighted
+5. Plain-language explanation is generated
+6. Summary can be downloaded as PDF
+
+
+
+## Tech Stack
+
+| Layer    | Technology                            |
+| -------- | ------------------------------------- |
+| Frontend | React, TypeScript, Tailwind CSS, Vite |
+| Backend  | FastAPI, Python 3.11+                 |
+| Database | SQLite (async via SQLAlchemy)         |
+| OCR      | Tesseract, pypdf, pdf2image           |
+| AI       | Groq, Google Gemini, or OpenAI        |
+
+
+
+## Architecture
+
+
+Frontend (React + Tailwind)
+        ↓
+FastAPI Backend
+        ↓
+OCR Engine (Tesseract)
+        ↓
+Groq / Gemini / OpenAI
+        ↓
+SQLite Database
+
+
+
+
+# Project Structure
+
 medexplain-ai/
-├── frontend/          # React app
+├── frontend/
 │   └── src/
 │       ├── api/
 │       ├── components/
 │       ├── pages/
 │       └── types/
+│
 ├── backend/
 │   ├── app/
-│   │   ├── ai/        # OCR + explainer
+│   │   ├── ai/
 │   │   ├── api/routes/
 │   │   ├── models/
 │   │   ├── schemas/
 │   │   └── services/
+│   │
 │   └── uploads/
+│
 └── README.md
-```
 
-## Prerequisites
 
-1. **Node.js** 18+ and **Python** 3.11+
-2. **Tesseract OCR** installed on your system:
-   - Windows: [UB Mannheim Tesseract](https://github.com/UB-Mannheim/tesseract/wiki) — add to PATH
-   - macOS: `brew install tesseract`
-   - Linux: `sudo apt install tesseract-ocr`
-3. **(Optional)** Poppler for scanned PDF OCR: [poppler releases](https://github.com/oschwartz10612/poppler-windows/releases/) on Windows
-4. **Groq API key** (recommended): [Groq Console](https://console.groq.com/keys)
 
-## Setup
 
-### Backend
+# Screenshots
 
-```bash
+### Home Page
+
+![Home 1](./screenshots/home-1.png)
+
+![Home 2](./screenshots/home-2.png)
+
+---
+
+### Upload Page
+
+![Upload](./screenshots/upload.png)
+
+---
+
+### Report Analysis
+
+![Report Analysis 1](./screenshots/report-analysis-1.png)
+
+![Report Analysis 2](./screenshots/report-analysis-2.png)
+
+![Report Analysis 3](./screenshots/report-analysis-3.png)
+
+---
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+
+
+# Prerequisites
+
+* Node.js 18+
+* Python 3.11+
+* Tesseract OCR installed on your system
+
+# Install Tesseract
+
+# Windows
+
+Install from:
+https://github.com/UB-Mannheim/tesseract/wiki
+
+Add Tesseract to PATH after installation.
+
+# macOS
+
+bash
+brew install tesseract
+
+# Linux
+
+bash
+sudo apt install tesseract-ocr
+
+
+Optional:
+Install Poppler for scanned PDF OCR support.
+
+
+# Setup
+
+# Backend
+
+bash
 cd backend
+
 python -m venv venv
+
 # Windows
 venv\Scripts\activate
+
 # macOS/Linux
 # source venv/bin/activate
 
 pip install -r requirements.txt
-copy .env.example .env   # Windows
-# cp .env.example .env   # macOS/Linux
-# Edit .env and set GROQ_API_KEY=your_key
+
+# Windows
+copy .env.example .env
+
+# macOS/Linux
+# cp .env.example .env
+
+# Add your API key in .env
+# GROQ_API_KEY=your_key
 
 python run.py
-```
 
-### Frontend
 
-```bash
+
+
+# Frontend
+
+bash
 cd frontend
+
 npm install
 npm run dev
-```
 
-Open **http://localhost:5173**. The Vite dev server proxies `/api` to the backend.
 
-## Environment variables
+Open:
 
-| Variable         | Description                          |
-|-----------------|--------------------------------------|
-| `GROQ_API_KEY`  | Groq API key (default provider)      |
-| `GROQ_MODEL`    | e.g. `llama-3.3-70b-versatile`       |
-| `GEMINI_API_KEY`| Optional Google Gemini key           |
-| `OPENAI_API_KEY`| Optional OpenAI key                  |
-| `AI_PROVIDER`   | `groq` (default), `gemini`, `openai` |
-| `DATABASE_URL`  | Default SQLite in `./data/`          |
-| `UPLOAD_DIR`    | File storage path                    |
-| `CORS_ORIGINS`  | Frontend origin(s)                   |
+text
+http://localhost:5173
 
-Without an API key, uploads still work: OCR runs and a fallback message explains how to enable AI.
 
-## API overview
 
-| Method | Endpoint                    | Description              |
-|--------|----------------------------|--------------------------|
-| GET    | `/api/health`              | Health check             |
-| POST   | `/api/reports/upload`      | Upload & process report  |
-| GET    | `/api/reports`             | List reports             |
-| GET    | `/api/reports/dashboard`   | Dashboard stats          |
-| GET    | `/api/reports/{id}`        | Report detail            |
-| GET    | `/api/reports/{id}/download` | PDF summary download |
-| POST   | `/api/reports/{id}/reprocess` | Re-run AI analysis   |
-| DELETE | `/api/reports/{id}`        | Delete report            |
 
-## Disclaimer
+# Environment Variables
 
-MediExplain AI is for educational and portfolio purposes. It does not provide medical diagnosis or treatment. Always consult a qualified healthcare professional about your health.
+| Variable       | Description                      |
+| -------------- | -------------------------------- |
+| GROQ_API_KEY   | Groq API key (default provider)  |
+| GROQ_MODEL     | Example: llama-3.3-70b-versatile |
+| GEMINI_API_KEY | Optional Gemini API key          |
+| OPENAI_API_KEY | Optional OpenAI API key          |
+| AI_PROVIDER    | groq / gemini / openai           |
+| DATABASE_URL   | SQLite database path             |
+| UPLOAD_DIR     | Upload storage folder            |
+| CORS_ORIGINS   | Allowed frontend origins         |
+
+Without an API key:
+
+* OCR still works
+* AI explanations fallback to demo mode
+
+
+
+# Future Improvements
+
+* Multi-language report explanations
+* Voice-based healthcare assistant
+* Medicine reminder system
+* Authentication and user accounts
+* AI health trend analysis
+* Doctor consultation integration
+
+
+
+# Disclaimer
+
+MediExplain AI is an educational and portfolio project designed to simplify medical report understanding using OCR and AI technologies.
+
+The platform does not provide medical diagnosis, treatment, or professional healthcare advice. Users should always consult qualified healthcare professionals regarding medical decisions.
+
+
+
+# Author
+
+Abhi Goswami
+
+GitHub:
+https://github.com/goswami-abhi
