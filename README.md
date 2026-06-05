@@ -4,7 +4,7 @@ Medical report analysis platform that uses OCR and LLM-based explanations to sim
 
 Upload PDFs or images of lab results, prescriptions, and scans — get OCR extraction, AI-generated explanations, highlighted values, and downloadable summaries.
 
-
+---
 
 ## Problem
 
@@ -12,9 +12,9 @@ Medical reports are often difficult for non-medical users to understand due to c
 
 MediExplain AI simplifies healthcare reports using OCR and AI-generated explanations written in everyday language, helping users better understand their medical documents.
 
+---
 
-
-# Key Highlights
+## Key Highlights
 
 * OCR-powered medical report extraction
 * AI-generated plain-language explanations
@@ -25,22 +25,23 @@ MediExplain AI simplifies healthcare reports using OCR and AI-generated explanat
 * Groq LLM integration
 * SQLite + SQLAlchemy async ORM
 
+---
 
+## Features
 
-# Features
-
-# Medical Report Upload
+### Medical Report Upload
 
 * Drag-and-drop PDF and image uploads
 * File preview cards
 * Support for prescriptions, lab reports, and scans
 
-# OCR Text Extraction
+### OCR Text Extraction
 
 * Tesseract OCR for images
 * PDF text extraction
 * OCR fallback for scanned PDFs
-# AI Medical Report Explainer
+
+### AI Medical Report Explainer
 
 * Groq (default), Gemini, or OpenAI integration
 * Converts clinical language into simple explanations
@@ -54,23 +55,23 @@ becomes:
 
 > “Your sugar level is slightly higher than normal.”
 
-# Value Highlights
+### Value Highlights
 
 * Normal / borderline / abnormal badges
 * Important medical values summarized into cards
 * Quick insights for easier understanding
 
-# Health Dashboard
+### Health Dashboard
 
 * Uploaded reports history
 * Recent activity tracking
 * Quick health insights
 
-# Download Summary
+### Download Summary
 
 * Export AI-generated summaries as PDF
 
-
+---
 
 ## How It Works
 
@@ -81,7 +82,7 @@ becomes:
 5. Plain-language explanation is generated
 6. Summary can be downloaded as PDF
 
-
+---
 
 ## Tech Stack
 
@@ -93,11 +94,11 @@ becomes:
 | OCR      | Tesseract, pypdf, pdf2image           |
 | AI       | Groq, Google Gemini, or OpenAI        |
 
-
+---
 
 ## Architecture
 
-
+```text
 Frontend (React + Tailwind)
         ↓
 FastAPI Backend
@@ -107,12 +108,13 @@ OCR Engine (Tesseract)
 Groq / Gemini / OpenAI
         ↓
 SQLite Database
+```
 
+---
 
+## Project Structure
 
-
-# Project Structure
-
+```text
 medexplain-ai/
 ├── frontend/
 │   └── src/
@@ -131,12 +133,14 @@ medexplain-ai/
 │   │
 │   └── uploads/
 │
+├── screenshots/
+│
 └── README.md
+```
 
+---
 
-
-
-# Screenshots
+## Screenshots
 
 ### Home Page
 
@@ -166,43 +170,46 @@ medexplain-ai/
 
 ![Dashboard](./screenshots/dashboard.png)
 
+---
 
-
-# Prerequisites
+## Prerequisites
 
 * Node.js 18+
 * Python 3.11+
 * Tesseract OCR installed on your system
 
-# Install Tesseract
+### Install Tesseract
 
-# Windows
+#### Windows
 
 Install from:
+
 https://github.com/UB-Mannheim/tesseract/wiki
 
 Add Tesseract to PATH after installation.
 
-# macOS
+#### macOS
 
-bash
+```bash
 brew install tesseract
+```
 
-# Linux
+#### Linux
 
-bash
+```bash
 sudo apt install tesseract-ocr
-
+```
 
 Optional:
 Install Poppler for scanned PDF OCR support.
 
+---
 
-# Setup
+## Setup
 
-# Backend
+### Backend
 
-bash
+```bash
 cd backend
 
 python -m venv venv
@@ -225,28 +232,28 @@ copy .env.example .env
 # GROQ_API_KEY=your_key
 
 python run.py
+```
 
+---
 
+### Frontend
 
-
-# Frontend
-
-bash
+```bash
 cd frontend
 
 npm install
 npm run dev
-
+```
 
 Open:
 
-text
+```text
 http://localhost:5173
+```
 
+---
 
-
-
-# Environment Variables
+## Environment Variables
 
 | Variable       | Description                      |
 | -------------- | -------------------------------- |
@@ -264,9 +271,24 @@ Without an API key:
 * OCR still works
 * AI explanations fallback to demo mode
 
+---
 
+## API Endpoints
 
-# Future Improvements
+| Method | Endpoint                    | Description             |
+| ------ | --------------------------- | ----------------------- |
+| GET    | /api/health                 | Health check            |
+| POST   | /api/reports/upload         | Upload & process report |
+| GET    | /api/reports                | List reports            |
+| GET    | /api/reports/dashboard      | Dashboard statistics    |
+| GET    | /api/reports/{id}           | Report detail           |
+| GET    | /api/reports/{id}/download  | Download PDF summary    |
+| POST   | /api/reports/{id}/reprocess | Re-run AI analysis      |
+| DELETE | /api/reports/{id}           | Delete report           |
+
+---
+
+## Future Improvements
 
 * Multi-language report explanations
 * Voice-based healthcare assistant
@@ -275,17 +297,17 @@ Without an API key:
 * AI health trend analysis
 * Doctor consultation integration
 
+---
 
-
-# Disclaimer
+## Disclaimer
 
 MediExplain AI is an educational and portfolio project designed to simplify medical report understanding using OCR and AI technologies.
 
 The platform does not provide medical diagnosis, treatment, or professional healthcare advice. Users should always consult qualified healthcare professionals regarding medical decisions.
 
+---
 
-
-# Author
+## Author
 
 Abhi Goswami
 
